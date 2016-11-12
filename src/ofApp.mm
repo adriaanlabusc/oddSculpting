@@ -25,11 +25,6 @@ void ofApp::setup(){
     
     ofSetLogLevel(OF_LOG_VERBOSE);
     
-    red = 100;
-    green = 100;
-    blue = 100;
-    alpha = 255;
-    
     rotationButton.addListener(this, &ofApp::rotationButtonPressed);
     
     // change default sizes for ofxGui so it's usable in small/high density screens
@@ -39,7 +34,8 @@ void ofApp::setup(){
     ofxGuiSetDefaultHeight(18);
     
     gui.setup("panel");
-    gui.add(color.set("color",ofColor(100,100,140),ofColor(0,0),ofColor(255,255))); // replace
+    
+    gui.add(color.set("color",ofColor(100,100,140,255),ofColor(0,0),ofColor(255,255))); // replace
     gui.add(rotationButton.setup("rotation"));
 }
 
@@ -143,20 +139,18 @@ void ofApp::touchDown(ofTouchEventArgs & touch){
 void ofApp::createBox(int x, int y){
     
     //identify the column that was clicked on
-    int boxX = (int) ofMap(x, 0, screenWidth, 0, boxesX - 1);    //int boxX = (int) ofMap(x, 0, ofGetWidth(), 0, 255);
-    int boxY = (int) ofMap(y, 0, screenHeight, 0, boxesY - 1); //int boxY = (int) ofMap(y, 0, ofGetHeight(), 0, 191);
+    int boxX = (int) ofMap(x, 0, screenWidth, 0, boxesX - 1);
+    int boxY = (int) ofMap(y, 0, screenHeight, 0, boxesY - 1);
     
     //don't draw on the ui &&
     //the x, and y parameters are sometimes larger than the window (possibly a bug in OF) and
     //this causes the ofMap to produce values that are too large (also possibly a bug)
     // added a little bit of extra padding to avoid drawing on controls
-    if((y > gui.getHeight() + 5 || x > gui.getWidth() + 5) &&(boxX < boxesX && boxY < boxesY)) {
+    if((y > gui.getHeight() + 5 || x > gui.getWidth() + 5) && (boxX < boxesX && boxY < boxesY)) {
         lastBoxX = boxX;
         lastBoxY = boxY;
         
-        //        int hex = ofColor(red,green,blue).getHex();  //OLD WAY, NOW COLOR IS A SINGLE VAR
-        int hex = color->getHex();
-        boxColor.setHex(hex, alpha);
+        boxColor.setHex(color->getHex(), color->a);
         
         boxGrid[boxX][boxY].push_back(BoxPixel(squareWidth,squareWidth,squareWidth, boxColor));  //boxes.push_back(ofBoxPrimitive(20,20,20));
         
