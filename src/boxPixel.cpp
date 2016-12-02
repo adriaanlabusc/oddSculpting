@@ -10,8 +10,6 @@
 
 //constructor
 BoxPixel::BoxPixel() {
-    //boxPrimitive.set(4, 4, 4);
-    //boxColor.set(color);
 }
 
 //constructor
@@ -33,7 +31,6 @@ void BoxPixel::move() {
 }
 
 void BoxPixel::draw(bool drawFlat) {
-    
     ofSetColor(boxColor);
     
     if (drawFlat) {

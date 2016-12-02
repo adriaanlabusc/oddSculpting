@@ -10,7 +10,6 @@ void ofApp::setup(){
     
     boxGrid = new vector<BoxPixel>*[boxesX];
     
-    //the example had this ++i, I don't know why
     for(int i = 0; i < boxesX; ++i) {
         boxGrid[i] = new vector<BoxPixel>[boxesY];
     }
@@ -90,28 +89,6 @@ void ofApp::draw(){
 void ofApp::exit(){
 
 }
-
-// THIS WAS FOR INTERACTING WITH THE GUI
-//void ofApp::guiEvent(ofxUIEventArgs &e)
-//{
-//    string name = e.getName();
-//    int kind = e.getKind();
-//    ofLog(OF_LOG_NOTICE, "widget name: " + ofToString(name));
-//    if(name == "Translucent")
-//    {
-//        ofxUIToggle *toggle = (ofxUIToggle *) e.getToggle();
-//        ofLog(OF_LOG_NOTICE, "toggle: " + ofToString(toggle->getValue()));
-//        if (toggle->getValue() == 1) {
-//            alpha = 0;
-//        } else {
-//            alpha = 255;
-//        }
-//    } else if (name == "Rotation") {
-//        trackmouse = !trackmouse;
-//    } else if (name == "Zoom") {
-//        
-//    }
-//}
 
 void ofApp::rotationButtonPressed() {
     trackmouse = !trackmouse;

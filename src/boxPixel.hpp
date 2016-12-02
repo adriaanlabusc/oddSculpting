@@ -36,11 +36,4 @@ private:
     
 };
 
-
-
-
-
-
-
-
 #endif /* boxPixel_hpp */

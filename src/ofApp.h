@@ -1,14 +1,7 @@
 #pragma once
 
 #include "ofxiOS.h"
-
-//#include "ofMain.h"
-//#include "ofxiOS.h"
-//#include "ofxiOSExtras.h"
-//
-#include "boxPixel.hpp"   // this used to be .h, don't know what the diff is
-//#include "ofxUI.h"  // this is deprecated use ofxGui instead which is built in
-
+#include "boxPixel.hpp"
 #include "ofxGui.h" // using this instead, it's built in
 
 class ofApp : public ofxiOSApp{
@@ -39,14 +32,14 @@ class ofApp : public ofxiOSApp{
         float holdTime;
         int numBoxesCreatedOnHold = 0;
         bool drawNumBoxesOnHold = false;
-        float squareWidth = 16;              //width of a box/square
+        float squareWidth = 16;             //width of a box/square
         int boxesX;                         //width in boxes
         int boxesY;
         int screenWidth;                    //width in pixels
         int screenHeight;
         int lastBoxX = -1;                  //index of last box to be created (0 <= lastBoxX < boxesX)
         int lastBoxY = -1;
-        vector<BoxPixel> ** boxGrid; //vector<BoxPixel> boxGrid[256][192];
+        vector<BoxPixel> ** boxGrid;
         ofEasyCam cam;
         bool trackmouse;
         ofColor boxColor;
